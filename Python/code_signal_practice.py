@@ -219,3 +219,27 @@ def solution(picture):
 
 picture = ["abc", "ded"]
 solution(picture)
+
+# Are Similar
+# Two arrays are called similar if one can be obtained
+# from another by swapping at most one pair of elements
+# in one of the arrays.
+# Given two arrays a and b, check whether they are similar.
+def solution(a, b):
+    return sorted(a) == sorted(b) and sum([a[i] != b[i] for i in range(len(a))]) <= 2
+
+
+def solution(a, b):
+    j = 0
+    for i in range(len(a)):
+        if a[i] != b[i]:
+            j += 1
+    if sorted(a) == sorted(b) and j <= 2:
+        return True
+    else:
+        return False
+
+
+a = [1, 2, 3]
+b = [2, 1, 3]
+solution(a, b)
