@@ -1,0 +1,300 @@
+
+'''Data Manipulation in Python Practice'''
+
+#Write a Pandas program to get the powers of an array values element-wise.
+#Note: First array elements raised to powers from second array
+import numpy as np
+import pandas as pd
+
+list1 = np.arange(6)
+list2 = np.arange(6)[::-1]
+df = pd.DataFrame([list1, list2]).T
+print(df)
+print(np.power(list1,list2))
+
+# Write a Pandas program to create and display a DataFrame
+# from a specified dictionary data which has the index labels.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data , index=labels)
+print(df)
+# Sorted dataframe
+df.reindex(sorted(df.columns), axis=1)
+
+# Write a Pandas program to display
+# a summary of the basic information about a specified DataFrame and its data.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("Summary of the basic information about this dataframe:")
+print(df.info())
+
+# Write a Pandas program to get the first 3 rows of a given DataFrame.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("First three rows of the data frame:")
+df.head(n=3)
+
+# Write a Pandas program to select the 'name' and 'score' columns from the following DataFrame.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("Select specific columns:")
+print(df[['name', 'score']])
+
+# Write a Pandas program to select the specified columns and rows from a given data frame
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("Select specific columns and rows:")
+print(df[['name', 'score']].iloc[[1,3,5,6]])
+
+# Write a Pandas program to select the rows
+# where the number of attempts in the examination is greater than 2.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("Rows where the number of attempts in the examination is greater than 2:")
+print(df[df["attempts"] > 2])
+
+# Write a Pandas program to count the number of rows and columns of a DataFrame.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data , index=labels)
+print("Total number of rows is ", df.shape[0])
+print("Total number of columns is ", df.shape[1])
+
+# Write a Pandas program to select the rows where the score is missing, i.e. is NaN.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+print("Rows where score is missing:")
+print(df[df['score'].isnull()])
+
+# Write a Pandas program to select the rows the score is between 15 and 20 (inclusive)
+print("Rows between 15 and 20 inclusive:")
+print(df[(df["score"] >= 15) & (df["score"] <= 20)])
+# or
+print(df[df["score"].between(15,20)])
+
+# Write a Pandas program to select the rows where number of attempts
+# in the examination is less than 2 and score greater than 15.
+print("Rows where score greater than 15 and attempts less than 2:")
+print(df[(df["score"] > 15) & (df["attempts"] < 2)])
+
+# Write a Pandas program to change the score in row 'd' to 11.5.
+df.loc["d", "score"] = 11.5
+print(df.loc["d"])
+
+# Write a Pandas program to calculate the sum of the examination attempts by the students.
+print("Sum of examination attempts:")
+print(df["attempts"].sum())
+
+# Write a Pandas program to calculate the mean score for each different student in DataFrame.
+print("Mean of examination scores:")
+print(df["score"].mean())
+
+# Write a Pandas program to append a new row 'k' to data frame with given values for each column.
+# Now delete the new row and return the original DataFrame.
+# Values for each column will be:
+new_data = {'name' : 'Suresh', 'score': 15.5, 'attempts': 1, 'qualify': 'yes', 'label': 'k'}
+new_data['attempts']
+print(df)
+df.loc['k'] = [new_data['name'], new_data['score'], new_data['attempts'],  new_data['qualify']]
+df
+df = df.drop('k')
+df
+
+
+# Write a Pandas program to sort the DataFrame first by 'name' in descending order,
+# then by 'score' in ascending order.
+print(df.sort_values(by=["name", "score"], ascending=[False, True]))
+
+#  Write a Pandas program to replace the 'qualify' column
+# contains the values 'yes' and 'no' with True and False.
+#df.replace({"qualify": {'yes':True, 'no':False}})
+# Or
+#df['qualify'] = df['qualify'].map({'yes': True, 'no': False})
+# or
+df['qualify'].replace(['yes', 'no'], ['True', 'False'])
+
+# Write a Pandas program to change the name 'James' to 'Suresh' in name column of the DataFrame. 
+df["name"] = df["name"].replace("James", "Suresh")
+
+df
+
+# Write a Pandas program to delete the 'attempts' column from the DataFrame.
+df = df.drop("attempts", axis = 1)
+# or
+df.pop("attempts")
+df
+
+# Write a Pandas program to insert a new column in existing DataFrame.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data , index=labels)
+color = ['Red','Blue','Orange','Red','White','White','Blue','Green','Green','Red']
+df["color"] = color
+print(df)
+
+# Write a Pandas program to iterate over rows in a DataFrame.
+exam_data = [{'name':'Anastasia', 'score':12.5}, {'name':'Dima','score':9}, {'name':'Katherine','score':16.5}]
+df = pd.DataFrame(exam_data)
+for index, row in df.iterrows():
+    print(row['name'], row['score'])
+
+# Write a Pandas program to get list from DataFrame column headers.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data , index=labels)
+print(df.columns.values)
+
+# Write a Pandas program to rename columns of a given DataFrame.
+d = {'col1': [1, 2, 3], 'col2': [4, 5, 6], 'col3': [7, 8, 9]}
+df = pd.DataFrame(data=d)
+
+df.columns = ['Column1', 'Column2', 'Column3']
+df.columns.values
+df = df.rename(columns={'col1': 'Column1', 'col2': 'Column2', 'col3': 'Column3'})
+df
+
+# Write a Pandas program to select rows from a given DataFrame based on values in some columns.
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(data=d)
+print("Original DataFrame")
+print(df)
+print("rows for col1 value == 4")
+df[df["col1"] == 4]
+df.loc[df["col1"] == 4]
+
+# Write a Pandas program to change the order of a DataFrame columns.
+print(df[["col3", "col2", "col1"]])
+
+# Write a Pandas program to add one row in an existing DataFrame.
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(data=d)
+print("Original DataFrame")
+print(df)
+new_data = {'col1' : 10, 'col2': 11, 'col3': 12}
+df.append(new_data, ignore_index=True)
+df
+
+# Write a Pandas program to write a DataFrame to CSV file using tab separator.
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(data=d)
+df.to_csv('new_file.csv', sep= '\t', index=False)
+
+# Write a Pandas program to count city wise
+# number of people from a given of data set (city, name of the person).
+df1 = pd.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+'city': ['California', 'Los Angeles', 'California', 'California', 'California', 'Los Angeles', 'Los Angeles', 'Georgia', 'Georgia', 'Los Angeles']})
+df1.groupby('city').size().reset_index(name="Number of people")
+
+# Write a Pandas program to delete DataFrame row(s) based on given column value.
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(data=d)
+print("Original DataFrame")
+print(df)
+new_df = df[df.col2 != 5]
+print(new_df)
+
+# Write a Pandas program to select a row of series/dataframe by given integer index.
+print(df.loc[[2]])
+
+# Write a Pandas program to replace all the NaN values with Zero's in a column of a dataframe.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+df.fillna(0)
+
+# Write a Pandas program to convert index in a column of the given dataframe.
+df.reset_index(level=0, inplace=True)
+df
+print("\nHiding index:")
+print(df.to_string(index=False))
+
+# Write a Pandas program to set a given value for particular cell in  DataFrame using index value.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+
+df.set_value(8, 'score', 10.5)
+df.at[8, 'score'] = 10.5
+df
+
+# Write a Pandas program to count the NaN values in one or more columns in DataFrame.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+df.isna().sum().sum()
+df.isna().values.sum()
+
+# Write a Pandas program to drop a list of rows from a specified DataFrame.
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(d)
+df
+df.drop([2,4])
+df.drop(df.index[[2,4]])
+
+# Write a Pandas program to reset index in a given DataFrame.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+df = df.drop(df.index[[0,1]])
+df.reset_index()
+
+# Write a Pandas program to divide a DataFrame in a given ratio.
+df = pd.DataFrame(np.random.randn(10, 2))
+part_70 = df.sample(frac=0.7, random_state=10)
+print(part_70)
+part_30 = df.drop(part_70.index)
+print(part_30)
+
+
+
