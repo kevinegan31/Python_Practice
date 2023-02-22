@@ -329,6 +329,299 @@ d = {'col1': [1, 2, 3], 'col2': [4, 5, 6], 'col3': [7, 8, 9]}
 df = pd.DataFrame(data=d)
 df.rename(columns = {"col2":"Column2"})
 
+# Write a Pandas program to get a list of a specified column of a DataFrame.
+d = {'col1': [1, 2, 3], 'col2': [4, 5, 6], 'col3': [7, 8, 9]}
+df = pd.DataFrame(data=d)
+print("Original DataFrame")
+print(df)
+col2_list = df["col2"].tolist()
+print("Col2 of the DataFrame to list:")
+print(col2_list)
 
+# Write a Pandas program to create a DataFrame from a Numpy array
+# and specify the index column and column headers.
+dtype = [('Column1','int32'), ('Column2','float32'), ('Column3','float32')]
+values = np.zeros(15, dtype=dtype)
+index = ['Index'+str(i) for i in range(1, len(values)+1)]
+# index = [i for i in range(1, len(values)+1)]
+df = pd.DataFrame(values, index=index)
+print(df)
 
+# Write a Pandas program to find the row
+# for where the value of a given column is maximum.
+d = {'col1': [1, 2, 3, 4, 7], 'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+print("Row where col1 has maximum value:")
+df["col1"].argmax()
+print("Row where col2 has maximum value:")
+df["col2"].argmax()
+print("Row where col3 has maximum value:")
+df["col3"].argmax()
+
+# Write a Pandas program to check whether a given column
+# is present in a DataFrame or not.
+d = {'col1': [1, 2, 3, 4, 7], 'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+col_check = ["col4", "col1"]
+for col in col_check:
+        if col in df.columns:
+                print(col + " is present in DataFrame.")
+        else:
+                print(col + " is not present in DataFrame.")
+
+# Write a Pandas program to get the specified row value of a given DataFrame.
+print("value of row 1")
+for col in df.columns:
+        print(col + " " + str( df[col].loc[0]))
+print("value of row 4")
+for col in df.columns:
+        print(col + " " + str( df[col].loc[3]))
+
+# Write a Pandas program to get the datatypes of columns of a DataFrame.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+print(df.dtypes)
+
+# Write a Pandas program to append data to an empty DataFrame.
+df = pd.DataFrame()
+data = pd.DataFrame({"col1": range(3),"col2": range(3)})
+df = pd.concat([df, data])
+print("After appending some data:")
+print(df)
+
+# Write a Pandas program to sort a given DataFrame by two or more columns.
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+df.sort_values(by=["attempts", "name"], ascending=[True, False])
+
+# Write a Pandas program to convert the datatype of a given column (floats to ints).
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+df.dtypes
+# Fills na with the mean value of scores then converts to int
+df["score"] = df["score"].fillna(df["score"].mean()).astype(int)
+df.dtypes
+
+# Write a Pandas program to remove infinite values from a given DataFrame.
+df = pd.DataFrame([1000, 2000, 3000, -4000, np.inf, -np.inf])
+print("Original DataFrame:")
+print(df)
+df = df.replace([np.Inf, -np.Inf], np.nan)
+print(df)
+
+# Write a Pandas program to insert a given column at a specific column index in a DataFrame.
+d = {'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+col1 = [1, 2, 3, 4, 7]
+str(col1)
+idx = 0
+df.insert(idx, column = 'col1', value = col1)
+df
+
+# Write a Pandas program to convert a given list of lists into a Dataframe.
+my_lists = [['col1', 'col2'], [2, 4], [1, 3]]
+headers = my_lists.pop(0)
+df = pd.DataFrame(my_lists, columns = headers)
+print(df)
+
+# Write a Pandas program to group by the first column
+# and get second column as lists in rows.
+df = pd.DataFrame( {'col1':['C1','C1','C2','C2','C2','C3','C2'], 'col2':[1,2,3,3,4,6,5]})
+print("Original DataFrame")
+print(df)
+df.groupby('col1')['col2'].apply(list)
+
+# Write a Pandas program to get column index from column name of a given DataFrame.
+d = {'col1': [1, 2, 3, 4, 7], 'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+df.columns.get_loc("col2")
+
+# Write a Pandas program to count number of columns of a DataFrame.
+d = {'col1': [1, 2, 3, 4, 7], 'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+df.columns.value_counts().sum()
+len(df.columns)
+df.shape[1]
+
+# Write a Pandas program to select all columns,
+# except one given column in a DataFrame.
+d = {'col1': [1, 2, 3, 4, 7], 'col2': [4, 5, 6, 9, 5], 'col3': [7, 8, 12, 1, 11]}
+df = pd.DataFrame(data=d)
+df.loc[:, df.columns != "col3"]
+
+# Write a Pandas program to get first n records of a DataFrame.
+df.head(3)
+
+# Write a Pandas program to get last n records of a DataFrame.
+df.tail(3)
+
+# Write a Pandas program to get topmost n records within each group of a DataFrame.
+df.nlargest(3, 'col1')
+df.nlargest(3, 'col2')
+df.nlargest(3, 'col3')
+
+# Write a Pandas program to remove first n rows of a given DataFrame.
+df[-2:]
+
+# Write a Pandas program to remove last n rows of a given DataFrame.
+df[:-3]
+
+# Write a Pandas program to add a prefix or suffix to all columns of a given DataFrame.
+df = pd.DataFrame({'W':[68,75,86,80,66],'X':[78,85,96,80,86], 'Y':[84,94,89,83,86],'Z':[86,97,96,72,83]});
+print("Original DataFrame")
+print(df)
+df.add_prefix("A_")
+
+df.add_suffix("_1")
+
+# Write a Pandas program to reverse order (rows, columns) of a given DataFrame.
+# Columns
+df[df.columns[::-1]]
+# Rows
+df.loc[::-1]
+
+# Write a Pandas program to select columns by data type of a given DataFrame.
+df = pd.DataFrame({
+    'name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Syed Wharton'],
+    'date_of_birth': ['17/05/2002','16/02/1999','25/09/1998','11/05/2002','15/09/1997'],
+    'age': [18.5, 21.2, 22.5, 22, 23]
+})
+
+print("Original DataFrame")
+print(df)
+print("\nSelect numerical columns")
+print(df.select_dtypes(include = "number"))
+
+print("\nSelect string columns")
+print(df.select_dtypes(include = "object"))
+
+# Write a Pandas program to split a given DataFrame into two random subsets.
+df = pd.DataFrame({
+    'name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Syed Wharton'],
+    'date_of_birth': ['17/05/2002','16/02/1999','25/09/1998','11/05/2002','15/09/1997'],
+    'age': ['18', '21', '22', '22', '23']
+})
+df1 = df.sample(frac = 0.6)
+print(df1)
+df2 = df.drop(df1.index)
+print(df2)
+
+# Write a Pandas program to rename all columns with the same pattern of a given DataFrame.
+df = pd.DataFrame({
+    'Name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Syed Wharton'],
+    'Date_Of_Birth ': ['17/05/2002','16/02/1999','25/09/1998','11/05/2002','15/09/1997'],
+    'Age': [18.5, 21.2, 22.5, 22, 23]
+})
+df.columns = df.columns.str.lower().str.rstrip()
+print(df.columns)
+
+# Write a Pandas program to merge datasets and check uniqueness.
+df = pd.DataFrame({
+    'Name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Syed Wharton'],
+    'Date_Of_Birth ': ['17/05/2002','16/02/1999','25/09/1998','11/05/2002','15/09/1997'],
+    'Age': [18.5, 21.2, 22.5, 22, 23]
+})
+print("Original DataFrame:")
+print(df)
+df1 = df.copy(deep = True)
+df = df.drop([0, 1])
+df1 = df1.drop([2])
+print("\nNew DataFrames:")
+print(df)
+print(df1)
+print('\n"one_to_one”: check if merge keys are unique in both left and right datasets:"')
+df_one_to_one = pd.merge(df, df1, validate = "one_to_one")
+print(df_one_to_one)
+print('\n"one_to_many” or “1:m”: check if merge keys are unique in left dataset:')
+df_one_to_many = pd.merge(df, df1, validate = "one_to_many")
+print(df_one_to_many)
+print('“many_to_one” or “m:1”: check if merge keys are unique in right dataset:')
+df_many_to_one = pd.merge(df, df1, validate = "many_to_one")
+print(df_many_to_one)
+
+# Write a Pandas program to convert continuous values
+# of a column in a given DataFrame to categorical.
+df = pd.DataFrame({
+    'name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Syed Wharton', 'Kierra Gentry'],
+      'age': [18, 22, 85, 50, 80, 5]
+})
+print("Original DataFrame:")
+print(df)
+df.dtypes
+df["age_groups"] = pd.cut(df["age"], bins = [0,18,65,99], labels = ["kids", "adult", "elderly"])
+print(df["age_groups"])
+
+# Write a Pandas program to display memory usage of a given DataFrame
+# and every column of the DataFrame.
+df.info(memory_usage="deep")
+df.memory_usage(deep = True)
+
+# Write a Pandas program to combine many given series to create a DataFrame.
+sr1 = pd.Series(['php', 'python', 'java', 'c#', 'c++'])
+sr2 = pd.Series([1, 2, 3, 4, 5])
+ser_df = pd.DataFrame(sr1, sr2).reset_index()
+print(ser_df)
+ser_df = pd.concat([sr1, sr2], axis = 1)
+print(ser_df)
+ser_df = pd.DataFrame({"col1":sr1, "col2":sr2})
+print(ser_df.head(5))
+
+# Write a Pandas program to use a local variable within a query.
+df = pd.DataFrame({'W':[68,75,86,80,66],'X':[78,85,96,80,86], 'Y':[84,94,89,83,86],'Z':[86,97,96,72,83]});
+print("Original DataFrame")
+print(df)
+max_w = df["W"].max()
+# can reference variables with the @ symbol
+print(df.query("W < @max_w"))
+
+# Write a Pandas program to clean object column
+# with mixed data of a given DataFrame using regular expression.
+d = {"agent": ["a001", "a002", "a003", "a003", "a004"], "purchase":[4500.00, 7500.00, "$3000.25", "$1250.35", "9000.00"]}
+df = pd.DataFrame(d)
+df["purchase"].apply(type)
+df["purchase"] = df["purchase"].replace("[$,]", "", regex = True).astype("float")
+df["purchase"].apply(type)
+df
+
+# Write a Pandas program to get the numeric representation of an array
+# by identifying distinct values of a given column of a dataframe.
+df = pd.DataFrame({
+    'Name': ['Alberto Franco','Gino Mcneill','Ryan Parkes', 'Eesha Hinton', 'Gino Mcneill'],
+    'Date_Of_Birth ': ['17/05/2002','16/02/1999','25/09/1998','11/05/2002','15/09/1997'],
+    'Age': [18.5, 21.2, 22.5, 22, 23]
+})
+print("Original DataFrame:")
+print(df)
+label1, unique1 = pd.factorize(df["Name"])
+print(label1)
+print(unique1)
+
+# Write a Pandas program to replace the current value in a dataframe column based
+# on last largest value.
+# If the current value is less than last largest value replaces the value with 0.
+df1=pd.DataFrame({'rnum':[23, 21, 27, 22, 34, 33, 34, 31, 25, 22, 34, 19, 31, 32, 19]})
+print("Original DataFrame:")
+print(df1)
+df1_max = df1.max()[0]
+df1['rnum']=df1.rnum.where(df1.rnum.eq(df1.rnum.cummax()),0)
+
+# Write a Pandas program to check for inequality of two given DataFrames.
+df1 = pd.DataFrame({'W':[68,75,86,80,None],'X':[78,85,None,80,86], 'Y':[84,94,89,83,86],'Z':[86,97,96,72,83]});
+df2 = pd.DataFrame({'W':[78,75,86,80,None],'X':[78,85,96,80,76], 'Y':[84,84,89,83,86],'Z':[86,97,96,72,83]});
+
+df1.ne(df2)
+
+# Write a Pandas program to get lowest n records within each group of a given DataFrame.
+d = {'col1': [1, 2, 3, 4, 7, 11], 'col2': [4, 5, 6, 9, 5, 0], 'col3': [7, 5, 8, 12, 1,11]}
+df = pd.DataFrame(data=d)
+df.nsmallest(3, 'col1')
 
