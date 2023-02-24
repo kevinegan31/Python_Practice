@@ -210,5 +210,8 @@ dd = np.diff(np.sign(np.diff(ser)))
 peak_locs = np.where(dd == -2)[0] + 1
 peak_locs
 
-
-
+# Replace the spaces in my_str with the least frequent character.
+my_str = 'dbc deb abed gade'
+from collections import Counter
+min(Counter(my_str).values())
+my_str.replace(' ', Counter(my_str).min())
