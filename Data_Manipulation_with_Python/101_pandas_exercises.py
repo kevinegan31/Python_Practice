@@ -215,3 +215,35 @@ my_str = 'dbc deb abed gade'
 from collections import Counter
 min(Counter(my_str).values())
 my_str.replace(' ', Counter(my_str).min())
+
+
+def fizzbuzz(n):
+    for n_int in range(n+1):
+        if n_int % 3 == 0 and n_int % 5 == 0:
+            print("fizzbuzz")
+            continue
+        elif n_int % 3 == 0:
+            print("fizz")
+            continue
+        elif n_int % 5 == 0:
+            print("buzz")
+            continue
+        else:
+            print(n_int)
+
+def fizzBuzz(n):
+    # Write your code here
+    for n_int in range(1, n+1):
+        if n_int % 3 == 0 and n_int % 5 == 0:
+            print('FizzBuzz')
+        elif n_int % 3 == 0:
+            print('Fizz')
+        elif n_int % 5 == 0:
+            print('Buzz')
+        else:
+            print(str(n_int))
+# print "\n".join(fizzBuzz(n) for n in range(1,n))
+fizzbuzz(15)
+
+n = 50
+fizzbuzz(50)
