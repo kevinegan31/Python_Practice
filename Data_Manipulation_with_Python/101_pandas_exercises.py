@@ -92,7 +92,8 @@ ser.shape
 
 ser_df = pd.DataFrame(ser.values.reshape((7,5)))
 print(ser_df)
-
+ser_df['new_col'] = range(0,7)
+ser_df
 type(ser_df)
 
 # 13. Find the positions of numbers
@@ -112,9 +113,9 @@ ser.take(pos)
 # horizontally (to form a dataframe).
 ser1 = pd.Series(range(5))
 ser2 = pd.Series(list('abcde'))
-# horizontal
+# horizontal -- by columns
 pd.concat([ser1, ser2], axis = 1)
-# vertical
+# vertical -- by row
 pd.concat([ser1, ser2], axis = 0)
 
 # 16. Get the positions of items of ser2 in ser1 as a list.
@@ -247,3 +248,19 @@ fizzbuzz(15)
 
 n = 50
 fizzbuzz(50)
+
+def Fizzbuzz(n):
+    for n_int in range(n+1):
+        if n_int % 3 == 0 & n_int % 5 == 0:
+            print("fizzbuzz")
+            continue
+        elif n_int % 3 == 0:
+            print("fizz")
+            continue
+        elif n_int % 5 == 0:
+            print("buzz")
+            continue
+        else:
+            print(n_int)
+            
+Fizzbuzz(15)
