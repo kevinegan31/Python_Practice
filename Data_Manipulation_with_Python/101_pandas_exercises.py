@@ -588,3 +588,7 @@ series_pop.drop('Luanda')
 
 series = pd.Series({'a':6, 'b':2, 'c':9, 'd':1, 'e':4, 'f':8, 'g':3, 'h':5, 'i':7})
 series.loc[['d', 'e', 'f','g']]
+
+series = pd.Series({'a':6, 'b':2, 'c':9, 'd':1, 'e':4, 'f':8, 'g':3, 'h':5, 'i':7})
+
+list(zip(series.index, series))
