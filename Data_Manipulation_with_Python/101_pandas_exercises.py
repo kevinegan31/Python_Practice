@@ -555,3 +555,36 @@ df
 for index, rows in df.iterrows():
     print(rows['name'], rows['score'])
 
+import pandas as pd
+series = pd.Series([28, 9, 82, 38, 44, 55, 23, 7, 64, 59, 5, 76, 12, 89, 50, 25, 33, 45, 93, 60, 72, 21, 89, 86, 26])
+series[0]
+series.index[0]
+series.index[-1]
+round(len(series) / 2)
+series.values[-1]
+type(series.values[round(len(series) / 2)])
+series.median().astype('int64')
+
+values = list(range(0,26))
+pd.Series(values).str.isalpha
+values.str.isalpha
+
+
+series = pd.Series([28, 9, 82, 38, 44, 55, 23, 7, 64, 59, 5, 76, 12, 89, 50, 25, 33, 45, 93, 60, 72, 21, 89, 86, 26])
+series.index = range(1,len(series)+1)
+series
+
+populations = {
+    'Cairo': 11001000,
+    'Johannesburg': 3670000,
+    'Dakar': 2863000,
+    'Casablanca': 3284000,
+    'Lagos': 10578000
+}
+series_pop = pd.Series(populations)
+series_pop['Luanda'] = 4772000
+series_pop.drop('Luanda')
+
+
+series = pd.Series({'a':6, 'b':2, 'c':9, 'd':1, 'e':4, 'f':8, 'g':3, 'h':5, 'i':7})
+series.loc[['d', 'e', 'f','g']]
