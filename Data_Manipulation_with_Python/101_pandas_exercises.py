@@ -592,3 +592,53 @@ series.loc[['d', 'e', 'f','g']]
 series = pd.Series({'a':6, 'b':2, 'c':9, 'd':1, 'e':4, 'f':8, 'g':3, 'h':5, 'i':7})
 
 list(zip(series.index, series))
+
+
+# Write a Pandas program to calculate the
+# sum of the examination attempts by the students.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df = pd.DataFrame(exam_data, index=labels)
+df['attempts'].sum()
+
+# Write a Pandas program to calculate
+# the mean score for each different student in DataFrame.
+df['score'].mean()
+
+# Write a Pandas program to append a new row 'k' to data frame
+# with given values for each column.
+# Now delete the new row and return the original DataFrame.
+exam_data  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index=labels)
+
+
+new_data = ['Suresh', 15.5, 1, 'yes']
+df.loc['k'] = new_data
+df
+df.drop('k')
+
+# Write a Pandas program to select a row of series/dataframe by given integer index
+d = {'col1': [1, 4, 3, 4, 5], 'col2': [4, 5, 6, 7, 8], 'col3': [7, 8, 9, 0, 1]}
+df = pd.DataFrame(data=d)
+df.loc[[2]]
+
+# Fill na with 0
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+        'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+        'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+        'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+df = pd.DataFrame(exam_data)
+
+df.fillna(0)
+
+
+
+
